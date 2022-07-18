@@ -1,0 +1,26 @@
+config:
+    name: testcase description
+    variables: {}
+teststeps:
+-   name: /admin/info
+    request:
+        headers:
+            Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE2NTgxMjExNTI1NDIsImV4cCI6MTY1ODcyNTk1Mn0.zXC1aPQJjOEolnIzHbOYucCSKkiI8Ml_JA6pnic3QXqTX-4GR09O9zLqZ5MqCkc_YXPnqJq3-LgB9EswOkN7gA
+            Content-Type: application/json
+            Postman-Token: 4276c019-c508-4d62-935a-64ddad9675e6
+            User-Agent: PostmanRuntime/7.28.0
+        method: GET
+        url: http://admin-api.macrozheng.com/admin/info
+    validate:
+    -   eq:
+        - status_code
+        - 200
+    -   eq:
+        - headers.Content-Type
+        - application/json
+    -   eq:
+        - content.code
+        - 200
+    -   eq:
+        - content.message
+        - 操作成功
