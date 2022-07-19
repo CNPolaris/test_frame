@@ -51,6 +51,7 @@ class API(object):
             logger.info("====={}接口：{} 请求成功！=====".format(method, url))
             logger.info("Request headers:{}".format(headers))
             logger.info("Request Body:{}".format(request_json))
+            logger.info("Request Params:{}".format(request_query))
             logger.info("Status Code:{}".format(response.status_code))
             logger.info("Response Body:{}".format(response.text))
             return response

@@ -22,10 +22,13 @@ class TestQuestionBatch(BasicCase):
     @allure.feature("题库管理")
     @allure.story("题目-增查删改")
     @pytest.mark.all
-    @pytest.mark.question
+    @pytest.mark.question_batch
     @pytest.mark.parametrize("analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title",
                              question_list)
-    def test_question_batch_add(self,analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title):
+    def test_question_batch_add_search_delete(self,analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title):
+        logger.info("=========================Case:[题库管理-批量测试-增查删]开始执行=========================")
         body = {"analyze": analyze, "correct": correct, "difficult": difficult, "gradeLevel": gradeLevel, "id": id,
                 "items": items, "questionType": questionType, "score": score, "subjectId": subjectId, "title": title}
-        qbp.question_batch_add(body)
+        qbp.question_batch_add_search_delete(body, title)
+        logger.info("=========================Case:[题库管理-批量测试-增查删]结束执行执行=========================")
+
