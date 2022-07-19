@@ -92,8 +92,9 @@ class BasicApi(API):
         # 获取期望
         _api_item["expect"] = self.io.get_api_validate(module, file_name)
         return _api_item
+
     @staticmethod
-    def get_item_of_search(seq, key1, value,key2):
+    def get_item_of_search(seq, key1, value, key2):
         """
         从查询队列中取出一条数据的主键id
         :param seq: 数据队列
