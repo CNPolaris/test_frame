@@ -1,0 +1,39 @@
+config:
+    name: testcase description
+    variables: {}
+teststeps:
+-   name: /api/admin/question/list
+    request:
+        headers:
+            Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE2NTgyMTc3MzExMDEsImV4cCI6MTY1ODgyMjUzMX0.cz3V5RYiwONbt3YGfujYyDEMSvMgcjiJgXdI0tnlLbcG08xByL9NgxRDGfMb8zi88vC6A4yfrRR8h2ZNwuP4Ag
+            Content-Type: application/json
+            DNT: '1'
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+                (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+            X-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE2NTgyMTc3MzExMDEsImV4cCI6MTY1ODgyMjUzMX0.cz3V5RYiwONbt3YGfujYyDEMSvMgcjiJgXdI0tnlLbcG08xByL9NgxRDGfMb8zi88vC6A4yfrRR8h2ZNwuP4Ag
+            sec-ch-ua: '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"'
+            sec-ch-ua-mobile: ?0
+            sec-ch-ua-platform: '"Windows"'
+        json:
+            gradeLevel: null
+            id: null
+            questionType: null
+            subjectId: null
+        method: POST
+        params:
+            limit: '15'
+            page: '1'
+        url: http://127.0.0.1:8000/api/admin/question/list
+    validate:
+    -   eq:
+        - status_code
+        - 200
+    -   eq:
+        - content.code
+        - 2000
+    -   eq:
+        - content.message
+        - 成功

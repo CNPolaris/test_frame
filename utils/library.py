@@ -21,7 +21,7 @@ class API(object):
         pass
 
     @staticmethod
-    def request(method, url, headers, request_json, expect_dict):
+    def request(method, url, headers, request_json, request_query, expect_dict):
         """
         request 接口测试，请求结束后含请求头，请求体
         :param method: 接口的请求类型 get post put delete
@@ -32,7 +32,7 @@ class API(object):
         :param expect_dict: 期望结果 需要类型：dict()
         :return: response 响应结果
         """
-        response = requests.request(method=method, url=url, headers=headers, json=request_json,
+        response = requests.request(method=method, url=url, headers=headers, json=request_json, params= request_query,
                                     verify=False)
         tips_code = "{}接口：{} 响应异常！预期:{} 实际:{}".format(method, url, expect_dict["status_code"], response.status_code)
         # 断言判断请求是否成功
