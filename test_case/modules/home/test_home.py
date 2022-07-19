@@ -15,6 +15,8 @@ class TestHome(BasicCase):
     """
     首页-测试用例
     """
+    @allure.feature("首页-测试用例")
+    @allure.story("登陆后首页获取信息")
     @pytest.mark.all
     @pytest.mark.home
     def test_get_admin_info(self):

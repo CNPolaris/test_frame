@@ -34,8 +34,8 @@ class BasicApi(API):
         _api_item["headers"] = self.io.get_api_headers(module, file_name)
         # 获取请求体
         _api_item["body"] = self.io.get_api_body(module, file_name)
-        # 获取请求参数
-        _api_item["params"] = self.io.get_api_params(module, file_name)
+        # # 获取请求参数
+        # _api_item["params"] = self.io.get_api_params(module, file_name)
         # 获取期望
         _api_item["expect"] = self.io.get_api_validate(module, file_name)
         return _api_item

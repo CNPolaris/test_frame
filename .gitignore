@@ -128,3 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /.idea/
+.vscode/
+
+# pytest result json
+/data_io/allure/result/
+/data_io/allure/report/
+/data_io/logs/
