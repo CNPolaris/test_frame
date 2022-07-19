@@ -11,8 +11,8 @@ class QuestionBatchProcess(object):
     def __init__(self):
         self.question = QuestionBatchApis()
 
-    def question_batch_add(self,analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title):
-        self.question.question_batch_add(analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title)
+    def question_batch_add(self,body):
+        self.question.question_batch_add(body)
 
 
 question_batch_process = QuestionBatchProcess()

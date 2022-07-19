@@ -20,19 +20,11 @@ class QuestionBatchApis(BasicApi):
         self.file_name = os.path.dirname(os.path.realpath(__file__)).split(os.sep)[-1]
         self.module_path = self.file_name.replace("/", os.sep)
 
-    def question_batch_add(self, analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title):
+    def question_batch_add(self, body):
         # 公有0--解析接口有关数据 0.method 1.path 2.headers 3.body 4.expect
         api_item = self.get_api_item(self.module_path, "question_add.yml")
-        api_item["body"]["analyze"] = analyze
-        api_item["body"]["correct"] = correct
-        api_item["body"]["difficult"] = difficult
-        api_item["body"]["gradeLevel"] = gradeLevel
-        api_item["body"]["id"] = id
-        api_item["body"]["items"] = items
-        api_item["body"]["questionType"] = questionType
-        api_item["body"]["score"] = score
-        api_item["body"]["subjectId"] = subjectId
-        api_item["body"]["title"] = title
+        # 公有--替换数据
+        api_item["body"] = body
         # 公有1--拼接完整的url请求路径 base_url(根据环境env) + yml中接口路径
         api_item["path"] = config.get_base_url() + api_item["path"]
         # 公有2--组装请求标头headers 形成携带token的headers yml中headers + 用最新拿到的token替换Authorization - values

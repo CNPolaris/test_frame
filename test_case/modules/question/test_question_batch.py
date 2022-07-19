@@ -23,6 +23,9 @@ class TestQuestionBatch(BasicCase):
     @allure.story("题目-增查删改")
     @pytest.mark.all
     @pytest.mark.question
-    @pytest.mark.parametrize("analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title", question_list)
+    @pytest.mark.parametrize("analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title",
+                             question_list)
     def test_question_batch_add(self,analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title):
-        qbp.question_batch_add(analyze,correct,difficult,gradeLevel,id,items,questionType,score,subjectId,title)
+        body = {"analyze": analyze, "correct": correct, "difficult": difficult, "gradeLevel": gradeLevel, "id": id,
+                "items": items, "questionType": questionType, "score": score, "subjectId": subjectId, "title": title}
+        qbp.question_batch_add(body)
