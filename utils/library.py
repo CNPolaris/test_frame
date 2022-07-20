@@ -8,8 +8,54 @@
 import json
 import os
 import requests
+import xlrd
 
 from utils.logger import logger
+
+
+class Excel(object):
+    """
+    Excel工具类简易封装
+    """
+    @staticmethod
+    def read_excel(excel_path, sheet_num=0):
+        """
+        读取excel文件，返回一个sheet对象
+        :param excel_path: 文件的绝对路径 需要类型：str
+        :param sheet_num: sheet编号 默认值0
+        :return:
+        """
+        try:
+            workbook = xlrd.open_workbook(excel_path)
+            book_sheet = workbook.sheet_by_index(sheet_num)
+        except Exception as e:
+            return e
+        else:
+            return book_sheet
+
+    @staticmethod
+    def read_excel_to_list(excel_path, sheet_num=0):
+        """
+        读取excel数据转换成list[dict{}]
+        :param excel_path: 文件的绝对路径 需要类型：str excel文件格式xls
+        :param sheet_num: table index
+        :return:  返回表头、和读取结果
+        """
+        # 读取excel
+        table = excel.read_excel(excel_path, sheet_num)
+        # 保存读取结果
+        result = []
+        # 表头
+        table_params = table.row_values(0)
+        # 按行读取
+        for r in range(1, table.nrows):
+            # 临时变量 {}
+            temp = {}
+            # 按列读取数据
+            for l in range(table.ncols):
+                temp[table_params[l]] = table.row_values(r)[l]
+            result.append(temp)
+        return table_params, result
 
 
 class API(object):
@@ -58,3 +104,7 @@ class API(object):
 
 
 api = API()
+excel = Excel()
+
+# if __name__ == '__main__':
+
